@@ -1,28 +1,42 @@
 package calculadora;
 
+import javax.swing.*;
+
 public class TestaCalculadora {
-    public static void main (String [] args){
+    public static void main(String[] args) {
         Calculadora calc = new Calculadora();
-        calc.n1 = 40;
-        calc.n2 = 2;
-        System.out.println(calc.n1);
-        System.out.println(calc.n2);
 
-        System.out.println("Soma: " +calc.somar());
+        System.out.println("Soma: " + calc.somar(50, 100));
+        System.out.println("Diferença: " + calc.subtrair(50, 100));
+        System.out.println("Produto: " + calc.multiplicar(50, 100));
+        System.out.println("Quociente: " + calc.dividir(50, 100));
 
-        System.out.println("Diferença: " +calc.subtrair());
+        do {
+            String numero1 = JOptionPane.showInputDialog("Digite o primeiro número: ");
+            String numero2 = JOptionPane.showInputDialog("Digite o segundo número: ");
 
-        System.out.println("Produto: " +calc.multiplicar());
+            // Verificações de condições de erro
+            if (numero1 == null || numero2 == null) {
+                System.exit(0);
+            }
+            else if (numero1.trim().equals("") || numero2.trim().equals(""))             //.trim() tira os espaços em branco
 
-        System.out.println("Quociente: " +calc.dividir());
+            {JOptionPane.showMessageDialog
+                        (null, "Erro na entrada de dados - digite novamente!");
+            }
+             else {
 
-        System.out.println("Resultado atual: " +calc.mostrarUltimoResultado());
+                //conversão obrigatória de dados:String para double
+                double num1 = Double.parseDouble(numero1);
+                double num2 = Double.parseDouble(numero2);
 
-        //com parâmetros
-        System.out.println("Soma com parâmetros: " +calc.somar(50,100));
-        System.out.println("Diferença com parâmetros: " +calc.subtrair(50,100));
-        System.out.println("Produto com parâmetros " +calc.multiplicar(50,100));
-        System.out.println("Quociente com parâmetros: " +calc.dividir(50,100));
 
+// Chamando o método somar ()
+                double total = calc.somar(num1, num2);
+
+                JOptionPane.showMessageDialog
+                        (null, "Resultado = " + total);
+            }
+        } while (true);
     }
 }
