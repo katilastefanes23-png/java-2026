@@ -9,7 +9,11 @@ public class TestaConta {
         System.out.println(a+b);
 
         if ((a+b) == c){
+            System.out.println("números são iguais");
 
+        }
+        else {
+            System.out.println("Números ....");
         }
 
     }
